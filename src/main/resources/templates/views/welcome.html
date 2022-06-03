@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description"
+          content="The CMS web application. Content Management System provides users to be able to create, read, update, delete pages."/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/welcome.css"
+          th:href="@{/css/welcome.css}"/>
+    <title>Welcome page</title>
+</head>
+
+<body>
+<div class="vertical-menu">
+    <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="/new">New page</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+</div>
+
+<div class="body">
+    <h1>Welcome page</h1>
+
+    <a href="/unpublished"><i>View unpublished pages</i></a>
+
+    <ul th:each="page:${pages}">
+        <p>
+            <a id="published-pages-list"
+               th:href="@{/{slug} (slug=${page.getSlug()})}"
+                       th:text="${page.getTitle()}">Page</a>
+            <span>was published </span>
+            <span th:text="${page.getPublishedAt()}">Published Date</span>
+        </p>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Edit page from the CMS web application."/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/welcome.css"
+          th:href="@{/css/welcome.css}"/>
+
+    <title>Edit page</title>
+</head>
+
+<div class="vertical-menu">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/new">New page</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+</div>
+
+<div class="body">
+
+    <fieldset>
+        <legend><h1>Edit page</h1></legend>
+        <form th:method="PATCH" th:action="@{/{slug} (slug=${page.getSlug()})}" th:object="${page}">
+            <label for="title">Edit title:</label><br/>
+            <input class="input" type="text" th:field="*{title}" id="title"/><br/>
+            <div class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</div><br/>
+
+            <label for="description">Edit description:</label><br/>
+            <input class="input" type="text" th:field="*{description}" id="description"/><br/>
+            <div class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</div>
+            <br/>
+
+            <label for="content">Enter content:</label><br/>
+            <textarea class="textarea" th:field="*{htmlContent}" id="content"></textarea><br/>
+            <div class="error" th:if="${#fields.hasErrors('content')}" th:errors="*{htmlContent}">Content Error</div><br/>
+
+            <label for="priority">Edit priority:</label><br/>
+            <input type="number" th:field="*{priority}" id="priority" size="2"/><br/>
+            <div class="error" th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}">Priority Error</div><br/>
+
+            <label for="publishedFl">Publish page</label><br/>
+            <input id="publishedFl" type="checkbox" name="publishedFl" th:checked="*{publishedFl}"/><br/>
+
+            <input type="submit" value="Update!"/>
+        </form>
+    </fieldset>
+</div>
+
+</body>
+</html>

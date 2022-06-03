@@ -1,0 +1,117 @@
+html {
+    background-image: url("../images/bg.jpg");
+    background-size: cover;
+    font-family: 'Merriweather', serif;
+}
+
+body {
+    font-family: 'Merriweather', serif;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+}
+
+.vertical-menu {
+    width: 200px;
+}
+
+.vertical-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+}
+
+.vertical-menu a.active {
+    background-color: #058556;
+    color: white;
+}
+
+.vertical-menu li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.body {
+    margin-left: 18%;
+    margin-right: 30%;
+    padding: 1px 10px;
+    height: 100%;
+    text-align: justify;
+}
+
+.body h1 {
+    font-size: 40px;
+    text-shadow: 2px 2px 3px #2F4F4F;
+}
+
+.body ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.body ul a {
+    display: inline;
+    color: #063f2b;
+    padding: 8px 8px;
+    vertical-align: middle;
+}
+
+.body a {
+    color: #075d3f;
+    padding: 8px 8px;
+}
+
+.body span{
+    display: inline;
+    color: #063f2b;
+    vertical-align: middle;
+}
+
+.glow-button {
+    float: right;
+    text-decoration: none;
+    padding: 5px 20px;
+    margin: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+
+    letter-spacing: 2px;
+    color: #000000;
+    transition: .15s ease-in-out;
+}
+
+.glow-button:hover {
+    box-shadow: 0 0 10px 0 #058556 inset, 0 0 10px 4px #058556;
+    color: #c04c0e;
+}
+
+.error {
+    color: red;
+}
+
+.input {
+    width: 700px;
+}
+
+.textarea {
+    width:700px;
+    height:500px
+}

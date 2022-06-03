@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <meta th:name="description" th:content="${page.getDescription()}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/welcome.css"
+          th:href="@{/css/welcome.css}"/>
+    <title>View page</title>
+</head>
+
+<body>
+<div class="vertical-menu">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/new">New page</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+</div>
+
+<div class="body">
+    <p><h1 th:text="${page.getTitle()}">H1</h1>
+    <p th:text="${page.getContent()}">Content</p>
+    <p th:if="${page.getPublishedFl() == true}" th:text="${page.getPublishedAt()}"></p>
+
+    <div>
+         <form th:method="DELETE" th:action="@{/{slug} (slug=${page.getSlug()})}">
+            <input class="glow-button" type="submit" value="delete"/>
+        </form>
+        <form th:method="GET" th:action="@{/{slug}/edit (slug=${page.getSlug()})}">
+            <input class="glow-button" type="submit" value="edit"/>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
