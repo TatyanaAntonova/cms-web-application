@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = TestConfig.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Sql(value = {"/sql/create_table_before.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-//@Sql(value = {"/sql/delete_data_after.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+@Sql(value = {"/sql/delete_data_after.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class MainControllerTest {
     @LocalServerPort
     private int port;
@@ -84,7 +84,6 @@ public class MainControllerTest {
     public void editTest() throws Exception {
         mockMvc.perform(get("/{slug}/edit", "1-New-title"))
                 .andDo(print())
-                //.andExpect(xpath("//div[@id='title'][@value='New title*']").exists())
                 .andExpect(status().isOk());
     }
 
