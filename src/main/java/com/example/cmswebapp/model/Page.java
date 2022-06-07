@@ -40,12 +40,6 @@ public class Page {
     private String htmlContent;
 
     /**
-     * Content is the main part of HTML page.
-     */
-    //@NotEmpty(message = "Content must not be empty.")
-    private String content;
-
-    /**
      * Field publishedAt consists of date and time when the page was published.
      * If publishedAt less than current date and time, then the page has been published.
      */
@@ -74,7 +68,6 @@ public class Page {
         this.title = title;
         this.description = description;
         this.htmlContent = htmlContent;
-        this.content = content;
         this.publishedAt = publishedAt;
         this.publishedFl = publishedFl;
         this.priority = priority;
@@ -133,14 +126,6 @@ public class Page {
     }
 
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public String getPublishedAt() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
         return dateFormat.format(publishedAt);
@@ -187,7 +172,6 @@ public class Page {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", htmlContent='" + htmlContent + '\'' +
-                ", content='" + content + '\'' +
                 ", publishedAt=" + publishedAt +
                 ", publishedFl=" + publishedFl +
                 ", priority=" + priority +

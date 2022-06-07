@@ -71,10 +71,8 @@ public class PageDAO implements DAO<Page> {
     public void create(Page page) {
         String slug = new Slug().makeSlug(page.getTitle());
 
-        String content = Jsoup.parse(page.getHtmlContent()).text();
-
-        String sqlQuery = "INSERT INTO PagesInfo(slug, title, description, html_content, content, published_at, published_fl, priority, update_at)" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW()); commit;" +
+        String sqlQuery = "INSERT INTO PagesInfo(slug, title, description, html_content, published_at, published_fl, priority, update_at)" +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, NOW()); commit;" +
                 //make slug unique
                 "UPDATE pagesinfo set slug = concat(cast(id as varchar), '-', slug) " +
                 "where id = (select max(id) from pagesInfo); commit;";
@@ -85,7 +83,6 @@ public class PageDAO implements DAO<Page> {
                     page.getTitle(),
                     page.getDescription(),
                     page.getHtmlContent(),
-                    content,
                     page.getPublishedFl() ? LocalDateTime.now() : LocalDateTime.MAX,
                     page.getPublishedFl(),
                     page.getPriority());
@@ -102,7 +99,6 @@ public class PageDAO implements DAO<Page> {
     @Override
     public void update(String slug, Page page) {
         String newSlug = new Slug().makeSlug(page.getTitle());
-        String content = Jsoup.parse(page.getHtmlContent()).text();
 
         String sqlQuery =
                 "UPDATE PagesInfo " +
@@ -110,7 +106,6 @@ public class PageDAO implements DAO<Page> {
                         "slug = concat(id, '-', ?), " +
                         "description = ?, " +
                         "html_content = ?," +
-                        "content = ?, " +
                         "priority = ?," +
                         "published_at = ?," +
                         "published_fl = ?," +
@@ -123,7 +118,6 @@ public class PageDAO implements DAO<Page> {
                     newSlug,
                     page.getDescription(),
                     page.getHtmlContent(),
-                    content,
                     page.getPriority(),
                     page.getPublishedFl() ? LocalDateTime.now() : LocalDateTime.MAX,
                     page.getPublishedFl(),

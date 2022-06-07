@@ -20,7 +20,9 @@
 
 <div class="body">
     <p><h1 th:text="${page.getTitle()}">H1</h1>
-    <p th:text="${page.getContent()}">Content</p>
+
+    <p th:utext="${page.getHtmlContent()}">HTML Content</p>
+
     <p th:if="${page.getPublishedFl() == true}" th:text="${page.getPublishedAt()}"></p>
 
     <div>

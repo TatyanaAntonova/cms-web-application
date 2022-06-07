@@ -6,7 +6,6 @@ create table PagesInfo(
                           title varchar,
                           description varchar,
                           html_content varchar,
-                          content varchar,
                           published_at timestamp,
                           published_fl boolean,
                           priority int,

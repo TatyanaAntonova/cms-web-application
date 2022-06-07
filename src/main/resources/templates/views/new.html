@@ -33,7 +33,7 @@
 
         <label for="content">Enter content:</label><br/>
         <textarea class="textarea" th:field="*{htmlContent}" id="content"></textarea><br/>
-        <div class="error" th:if="${#fields.hasErrors('content')}" th:errors="*{htmlContent}">Content Error</div><br/>
+        <div class="error" th:if="${#fields.hasErrors('htmlContent')}" th:errors="*{htmlContent}">Content Error</div><br/>
 
         <label for="priority">Enter priority:</label><br/>
         <input type="number" th:field="*{priority}" id="priority" size="2"/><br/>

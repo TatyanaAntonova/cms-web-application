@@ -16,7 +16,6 @@ public class PageMapper implements RowMapper<Page> {
         page.setTitle(resultSet.getString("title"));
         page.setDescription(resultSet.getString("description"));
         page.setHtmlContent(resultSet.getString("html_content"));
-        page.setContent(resultSet.getString("content"));
         page.setPublishedAt(resultSet.getTimestamp("published_at"));
         page.setPublishedFl(resultSet.getBoolean("published_fl"));
         page.setPriority(resultSet.getInt("priority"));
